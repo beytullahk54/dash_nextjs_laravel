@@ -10,14 +10,14 @@ interface StatCardProps {
 
 const StatCard: React.FC<StatCardProps> = ({ title, value, description, icon, color = "primary" }) => {
   return (
-    <div className="stats shadow">
+    <div className="stats shadow bg-white border border-gray-100">
       <div className="stat">
-        <div className={`stat-figure text-${color}`}>
+        <div className={`stat-figure text-black`}>
           {icon}
         </div>
-        <div className="stat-title">{title}</div>
-        <div className={`stat-value text-${color}`}>{value}</div>
-        <div className="stat-desc">{description}</div>
+        <div className="stat-title text-gray-500">{title}</div>
+        <div className={`stat-value text-black`}>{value}</div>
+        <div className="stat-desc text-gray-400">{description}</div>
       </div>
     </div>
   );
@@ -26,7 +26,7 @@ const StatCard: React.FC<StatCardProps> = ({ title, value, description, icon, co
 const Home: React.FC = () => {
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-6">Dashboard Genel Bakış</h1>
+      <h1 className="text-2xl font-bold mb-6 text-gray-700">Dashboard Genel Bakış</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
         <StatCard
@@ -79,19 +79,19 @@ const Home: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-        <div className="card bg-base-100 shadow-xl">
+        <div className="card bg-white shadow-md border border-gray-100">
           <div className="card-body">
-            <h2 className="card-title">Son Etkinlikler</h2>
+            <h2 className="card-title text-gray-700">Son Etkinlikler</h2>
             <div className="overflow-x-auto">
-              <table className="table table-zebra">
-                <thead>
+              <table className="table table-zebra bg-white">
+                <thead className="bg-gray-50 text-black">
                   <tr>
                     <th>Kullanıcı</th>
                     <th>Etkinlik</th>
                     <th>Zaman</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className="text-gray-600">
                   <tr>
                     <td>Ahmet Yılmaz</td>
                     <td>Yeni sipariş oluşturdu</td>
@@ -118,12 +118,12 @@ const Home: React.FC = () => {
           </div>
         </div>
 
-        <div className="card bg-base-100 shadow-xl">
+        <div className="card bg-white shadow-md border border-gray-100">
           <div className="card-body">
-            <h2 className="card-title">Yapılacaklar</h2>
+            <h2 className="card-title text-gray-700">Yapılacaklar</h2>
             <div className="form-control">
               <div className="input-group">
-                <input type="text" placeholder="Yeni görev ekle..." className="input input-bordered w-full" />
+                <input type="text" placeholder="Yeni görev ekle..." className="input input-bordered bg-white border-gray-200 w-full text-gray-600" />
                 <button className="btn btn-square btn-primary">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
@@ -134,31 +134,31 @@ const Home: React.FC = () => {
             <div className="mt-4">
               <div className="flex items-center mb-2">
                 <input type="checkbox" className="checkbox checkbox-primary" />
-                <span className="ml-2">Haftalık raporu hazırla</span>
+                <span className="ml-2 text-gray-600">Haftalık raporu hazırla</span>
               </div>
               <div className="flex items-center mb-2">
                 <input type="checkbox" className="checkbox checkbox-primary" defaultChecked />
-                <span className="ml-2 line-through">Müşteri toplantısı için sunum hazırla</span>
+                <span className="ml-2 line-through text-gray-400">Müşteri toplantısı için sunum hazırla</span>
               </div>
               <div className="flex items-center mb-2">
                 <input type="checkbox" className="checkbox checkbox-primary" />
-                <span className="ml-2">Yeni ürünleri sisteme ekle</span>
+                <span className="ml-2 text-gray-600">Yeni ürünleri sisteme ekle</span>
               </div>
               <div className="flex items-center mb-2">
                 <input type="checkbox" className="checkbox checkbox-primary" />
-                <span className="ml-2">Sosyal medya içeriklerini planla</span>
+                <span className="ml-2 text-gray-600">Sosyal medya içeriklerini planla</span>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="card bg-base-100 shadow-xl">
+      <div className="card bg-white shadow-md border border-gray-100">
         <div className="card-body">
-          <h2 className="card-title">Son Siparişler</h2>
+          <h2 className="card-title text-gray-700">Son Siparişler</h2>
           <div className="overflow-x-auto">
-            <table className="table table-zebra">
-              <thead>
+            <table className="table table-zebra bg-white">
+              <thead className="bg-gray-50 text-gray-600">
                 <tr>
                   <th>Sipariş No</th>
                   <th>Müşteri</th>
@@ -168,13 +168,13 @@ const Home: React.FC = () => {
                   <th>İşlem</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="text-gray-600">
                 <tr>
                   <td>#1234</td>
                   <td>Ali Yılmaz</td>
                   <td>14.06.2023</td>
                   <td>1250 ₺</td>
-                  <td><div className="badge badge-success">Tamamlandı</div></td>
+                  <td><div className="badge badge-success text-white">Tamamlandı</div></td>
                   <td><button className="btn btn-xs btn-outline">Detay</button></td>
                 </tr>
                 <tr>
@@ -182,7 +182,7 @@ const Home: React.FC = () => {
                   <td>Zeynep Kaya</td>
                   <td>14.06.2023</td>
                   <td>850 ₺</td>
-                  <td><div className="badge badge-warning">İşlemde</div></td>
+                  <td><div className="badge badge-warning text-white">İşlemde</div></td>
                   <td><button className="btn btn-xs btn-outline">Detay</button></td>
                 </tr>
                 <tr>
@@ -190,7 +190,7 @@ const Home: React.FC = () => {
                   <td>Mehmet Demir</td>
                   <td>13.06.2023</td>
                   <td>2300 ₺</td>
-                  <td><div className="badge badge-info">Kargoda</div></td>
+                  <td><div className="badge badge-info text-white">Kargoda</div></td>
                   <td><button className="btn btn-xs btn-outline">Detay</button></td>
                 </tr>
                 <tr>
@@ -198,7 +198,7 @@ const Home: React.FC = () => {
                   <td>Ayşe Şahin</td>
                   <td>13.06.2023</td>
                   <td>1750 ₺</td>
-                  <td><div className="badge badge-error">İptal</div></td>
+                  <td><div className="badge badge-error text-white">İptal</div></td>
                   <td><button className="btn btn-xs btn-outline">Detay</button></td>
                 </tr>
               </tbody>

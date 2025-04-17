@@ -12,7 +12,7 @@ const Products = () => {
     };
   
     return (
-        <div className="bg-base-200 min-h-screen">
+        <div className="bg-white min-h-screen">
             <Header toggleSidebar={toggleSidebar} />
             
             <div className="flex">
@@ -21,8 +21,8 @@ const Products = () => {
             {/* Main Content */}
             <div className="flex-1 p-6">
                         
-                <div>
-                    <h1>Kullanıcılar</h1>
+                <div >
+                <h1 className="text-2xl font-bold mb-6 text-gray-700">Kullanıcılar</h1>
                 </div>
             </div>
             </div>

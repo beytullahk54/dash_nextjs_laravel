@@ -7,8 +7,8 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
   return (
-    <div className={`${isOpen ? 'w-64' : 'w-0 -ml-64'} transition-all duration-300 bg-base-100 min-h-[calc(100vh-64px)] shadow-lg`}>
-      <ul className="menu p-4 w-full">
+    <div className={`${isOpen ? 'w-64' : 'w-0 -ml-64'} transition-all duration-300 bg-white min-h-[calc(100vh-64px)] shadow-lg border-r border-gray-100`}>
+      <ul className="menu p-4 w-full text-gray-700">
         <li><Link href="/dashboard" className="font-medium text-primary">Ana Sayfa</Link></li>
         <li>
           <details>

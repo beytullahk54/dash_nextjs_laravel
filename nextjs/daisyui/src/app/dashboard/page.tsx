@@ -13,7 +13,7 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="bg-base-200 min-h-screen">
+    <div className="bg-white min-h-screen">
       <Header toggleSidebar={toggleSidebar} />
       
       <div className="flex">
