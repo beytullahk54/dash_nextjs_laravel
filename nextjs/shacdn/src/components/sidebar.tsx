@@ -5,9 +5,9 @@ import Link from "next/link"
 
 const menuItems = [
   { name: "Ana Sayfa", icon: HomeIcon, path: "/" },
-  { name: "İstatistikler", icon: BarChart3Icon, path: "/istatistikler" },
-  { name: "Kullanıcılar", icon: UsersIcon, path: "/kullanicilar" },
-  { name: "Ayarlar", icon: SettingsIcon, path: "/ayarlar" },
+  { name: "İstatistikler", icon: BarChart3Icon, path: "/statistics" },
+  { name: "Kullanıcılar", icon: UsersIcon, path: "/users" },
+  { name: "Ayarlar", icon: SettingsIcon, path: "/settings" },
 ]
 
 export function Sidebar() {

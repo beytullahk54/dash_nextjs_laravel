@@ -1,0 +1,50 @@
+import { Bell, Search, User, LogOut, UserCircle } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+
+export function Topbar() {
+  return (
+    <div className="border-b">
+      <div className="flex h-16 items-center px-4">
+        <div className="flex-1">
+          {/* <div className="relative w-96">
+            <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
+            <Input
+              placeholder="Ara..."
+              className="pl-8"
+            />
+          </div>*/}
+        </div>
+        <div className="flex items-center space-x-4">
+          {/* <Button variant="ghost" size="icon">
+            <Bell className="h-5 w-5" />
+          </Button> */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="flex items-center gap-2">
+                <User className="h-5 w-5" />
+                <span className="font-medium">Demo Demo</span>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem>
+                <UserCircle className="mr-2 h-4 w-4" />
+                <span>Profilim</span>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <LogOut className="mr-2 h-4 w-4" />
+                <span>Çıkış Yap</span>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+      </div>
+    </div>
+  )
+} 
