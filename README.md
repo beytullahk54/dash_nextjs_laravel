@@ -28,6 +28,9 @@ Bu proje, Laravel Sanctum tabanlı bir API ve buna bağlı birden fazla Next.js 
 
 ### Backend (Laravel)
 
+- Laravel Apilerini postman linkinden inceleyebilirsiniz
+- [Postman Link](https://gold-crater-485241.postman.co/workspace/Team-Workspace~f9d8922f-3ed7-428c-8def-162b26c5a530/collection/11619268-009e0398-51f4-446f-b499-e1f2dd5b784b?action=share&creator=11619268)
+
 ```bash
 cd laravel
 composer install
