@@ -1,47 +1,85 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Sidebar } from "@/components/sidebar"
-import { Topbar } from "@/components/topbar"
-import { Table, TableCaption, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table"
+"use client"
 
-export default function Statistics() {
-  const users = [
+import { Table, TableCaption, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table"
+import { useUserStore } from "@/store/useUserStore";
+import { useEffect } from "react";
+import { useSession } from "next-auth/react"
+import { Button } from "@/components/ui/button";
+import { Pencil, Trash2 } from "lucide-react";
+
+export default function Users() {
+  const { data: session } = useSession();
+  const { users, isLoading, error, fetchUsers } = useUserStore();
+
+  useEffect(() => {
+    if (session?.accessToken) {
+      fetchUsers(session.accessToken);
+    }
+  }, [session?.accessToken]);
+
+  /*const users = [
     { id: 1, name: "Ahmet Yılmaz", email: "ahmet@yilmaz.com", role: "Admin" },
     { id: 2, name: "Alperen Yılmaz", email: "alperen@yilmaz.com", role: "User" },
-  ];
+  ];*/
 
-  const columns = [
-    { id: "name", label: "Adı" },
-    { id: "email", label: "Email" },
-    { id: "role", label: "Rol" },
-  ];
+  if (isLoading) {
+    return (
+      <>
+        <h1 className="text-3xl font-bold mb-8">Kullanıcılar</h1>
+        <div>Yükleniyor...</div>
+      </>
+    );
+  }
+
+  if (error) {
+    return (
+      <>
+        <h1 className="text-3xl font-bold mb-8">Kullanıcılar</h1>
+        <div className="text-red-500">{error}</div>
+      </>
+    );
+  }
   
   return (
-    <div className="flex-1 p-4">
+    <>
       <h1 className="text-3xl font-bold mb-8">Kullanıcılar</h1>
       
-      <div className="grid gap-4 md:grid-cols-1 lg:grid-cols-1">
-
-        <Table className="w-full">
-          <TableCaption>Kullanıcılar</TableCaption>
+      <div className="rounded-md border">
+        <Table>
+          <TableCaption>Toplam {users.length} kullanıcı</TableCaption>
+          
           <TableHeader>
             <TableRow>
-              {columns.map((column) => (
-                <TableHead key={column.id}>{column.label}</TableHead>
-              ))}
-            </TableRow> 
+              <TableHead>Adı</TableHead>
+              <TableHead>Email</TableHead>
+              <TableHead>Kayıt Tarihi</TableHead>
+              <TableHead className="text-right">İşlemler</TableHead>
+            </TableRow>
           </TableHeader>
+          
           <TableBody>
             {users.map((user) => (
               <TableRow key={user.id}>
                 <TableCell className="font-medium">{user.name}</TableCell>
                 <TableCell>{user.email}</TableCell>
-                <TableCell>{user.role}</TableCell>
+                <TableCell>
+                  {new Date(user.created_at).toLocaleDateString('tr-TR')}
+                </TableCell>
+                <TableCell className="text-right">
+                  <div className="flex justify-end gap-2">
+                    <Button variant="ghost" size="icon">
+                      <Pencil className="h-4 w-4" />
+                    </Button>
+                    <Button variant="ghost" size="icon" className="text-red-500 hover:text-red-700">
+                      <Trash2 className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
-
       </div>
-    </div>
-  )
+    </>
+  );
 }
