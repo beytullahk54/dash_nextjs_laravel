@@ -1,0 +1,11 @@
+./laravel/vendor
+./laravel/node_modules
+./laravel/storage
+
+./nextjs/daisyui/node_modules
+./nextjs/daisyui/.next
+
+./nextjs/shacdn/node_modules
+./nextjs/shacdn/.next
+
+
