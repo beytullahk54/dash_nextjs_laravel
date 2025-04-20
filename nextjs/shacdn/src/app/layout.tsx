@@ -1,5 +1,6 @@
 import '@/app/globals.css'
 import { Inter } from 'next/font/google'
+import { AuthProvider } from '@/providers/auth-provider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -10,11 +11,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="tr" suppressHydrationWarning>
-      <body className={inter.className}>
-        <div className="min-h-screen bg-background">
-          {children}
-        </div>
+      <body className={inter.className} suppressHydrationWarning>
+        <AuthProvider>
+          <div className="min-h-screen bg-background">
+            {children}
+          </div>
+        </AuthProvider>
       </body>
     </html>
   )
+}
+
+// Metadata ekleyelim
+export const metadata = {
+  title: 'Dashboard',
+  description: 'Dashboard uygulaması',
 }

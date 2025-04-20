@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -13,14 +14,20 @@ export default function LoginPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    /*try {
-      await login(email, password);
-      router.push('/');
-    } catch (err) {
-      setError('Giriş başarısız. Lütfen bilgilerinizi kontrol edin.');
-    }*/
-  };    
+    const result = await signIn('credentials', {
+      email,
+      password,
+      redirect: false,
+    });
 
+    if (result?.error) {
+      setError('Giriş başarısız. Lütfen bilgilerinizi kontrol edin.');
+    } else {
+      router.push('/');
+      router.refresh();
+    }
+  };
+  
   return (
     <div className="flex h-screen items-center justify-center">
       <div className="w-full max-w-md space-y-8 p-8">
