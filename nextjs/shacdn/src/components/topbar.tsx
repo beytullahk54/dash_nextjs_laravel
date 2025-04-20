@@ -1,3 +1,5 @@
+"use client"
+
 import { Bell, Search, User, LogOut, UserCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -7,8 +9,18 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { signOut, useSession } from "next-auth/react"
 
 export function Topbar() {
+  const { data: session } = useSession();
+  
+  const handleSignOut = async () => {
+    await signOut({
+      redirect: true,
+      callbackUrl: '/login' // çıkış yapınca login sayfasına yönlendir
+    });
+  };
+
   return (
     <div className="border-b">
       <div className="flex h-16 items-center px-4">
@@ -29,7 +41,9 @@ export function Topbar() {
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="flex items-center gap-2">
                 <User className="h-5 w-5" />
-                <span className="font-medium">Demo Demo</span>
+                <span className="font-medium">
+                  {session?.user?.name}
+                </span>
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
@@ -37,8 +51,8 @@ export function Topbar() {
                 <UserCircle className="mr-2 h-4 w-4" />
                 <span>Profilim</span>
               </DropdownMenuItem>
-              <DropdownMenuItem>
-                <LogOut className="mr-2 h-4 w-4" />
+              <DropdownMenuItem onClick={handleSignOut}>
+                <LogOut className="mr-2 h-4 w-4"  />
                 <span>Çıkış Yap</span>
               </DropdownMenuItem>
             </DropdownMenuContent>
