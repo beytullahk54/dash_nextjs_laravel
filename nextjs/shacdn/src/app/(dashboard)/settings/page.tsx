@@ -2,7 +2,6 @@
 
 
 export default function Settings() {
-  const { data: session } = useSession();
 
   return (
     <div className="flex-1 p-4">
