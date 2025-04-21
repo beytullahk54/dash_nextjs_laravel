@@ -16,7 +16,7 @@ export const useUserStore = create<UserStore>((set) => ({
   fetchUsers: async (token: string) => {
     set({ isLoading: true, error: null });
     try {
-      const response = await fetch('http://laravel.test/api/user', {
+      const response = await fetch('${process.env.NEXT_PUBLIC_BACKEND_URL}/api/user', {
         headers: {
           'Accept': 'application/json',
           'Authorization': `Bearer ${token}`
