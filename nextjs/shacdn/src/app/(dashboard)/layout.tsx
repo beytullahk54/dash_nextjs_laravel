@@ -1,6 +1,8 @@
 // src/app/(dashboard)/layout.tsx
 import { Sidebar } from "@/components/sidebar"
 import { Topbar } from "@/components/topbar"
+import { useSession } from 'next-auth/react'
+import { redirect } from 'next/navigation'
 
 export default function DashboardLayout({
   children,
