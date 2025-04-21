@@ -1,23 +1,7 @@
 "use client"
 
-import { useEffect, useCallback } from "react";
-import { useRouter } from 'next/router';
 
 export default function Statistics() {
-  const { data: session } = useSession();
-  const router = useRouter();
-  
-  const fetchUsersCallback = useCallback(() => {
-    if (session?.accessToken) {
-    }else{
-      router.push('/'); // Anasayfaya yönlendir
-    }
-    
-  }, [session?.accessToken]);
-
-  useEffect(() => {
-    fetchUsersCallback();
-  }, [fetchUsersCallback]);
   
   return (
     <div className="flex-1 p-4">
