@@ -14,7 +14,10 @@ export default function Users() {
   const fetchUsersCallback = useCallback(() => {
     if (session?.accessToken) {
       fetchUsers(session.accessToken);
+    }else{
+      router.push('/'); // Anasayfaya yönlendir
     }
+    
   }, [session?.accessToken, fetchUsers]);
 
   useEffect(() => {
