@@ -6,18 +6,14 @@ import { useEffect, useCallback } from "react";
 import { useSession } from "next-auth/react"
 import { Button } from "@/components/ui/button";
 import { Pencil, Trash2 } from "lucide-react";
-import { useRouter } from 'next/router';
 
 export default function Users() {
   const { data: session } = useSession();
   const { users, isLoading, error, fetchUsers } = useUserStore();
-  const router = useRouter();
 
   const fetchUsersCallback = useCallback(() => {
     if (session?.accessToken) {
       fetchUsers(session.accessToken);
-    }else{
-      router.push('/'); // Anasayfaya yönlendir
     }
     
   }, [session?.accessToken, fetchUsers]);
