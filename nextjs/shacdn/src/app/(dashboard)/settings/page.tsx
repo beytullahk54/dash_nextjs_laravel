@@ -1,7 +1,11 @@
 "use client"
 
+import { useEffect, useCallback } from "react";
+import { useRouter } from 'next/router';
+
 export default function Settings() {
   const { data: session } = useSession();
+  const router = useRouter();
 
   const fetchUsersCallback = useCallback(() => {
     if (session?.accessToken) {
@@ -11,6 +15,10 @@ export default function Settings() {
     }
     
   }, [session?.accessToken]);
+
+  useEffect(() => {
+    fetchUsersCallback();
+  }, [fetchUsersCallback]);
   
   return (
     <div className="flex-1 p-4">
