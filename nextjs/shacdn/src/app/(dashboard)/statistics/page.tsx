@@ -1,4 +1,16 @@
+"use client"
+
 export default function Statistics() {
+  const { data: session } = useSession();
+  
+  const fetchUsersCallback = useCallback(() => {
+    if (session?.accessToken) {
+    }else{
+      router.push('/'); // Anasayfaya yönlendir
+    }
+    
+  }, [session?.accessToken]);
+  
   return (
     <div className="flex-1 p-4">
         <h1 className="text-3xl font-bold mb-8">İstatistikler</h1>
