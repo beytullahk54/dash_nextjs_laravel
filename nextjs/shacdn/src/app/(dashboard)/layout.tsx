@@ -1,4 +1,5 @@
-// src/app/(dashboard)/layout.tsx
+'use client' // Bu satırla component'i Client Component olarak işaretle
+
 import { Sidebar } from "@/components/sidebar"
 import { Topbar } from "@/components/topbar"
 import { useSession } from 'next-auth/react'
