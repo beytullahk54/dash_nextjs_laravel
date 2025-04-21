@@ -10,7 +10,7 @@ export default function Settings() {
       router.push('/'); // Anasayfaya yönlendir
     }
     
-  }, [session?.accessToken, fetchUsers]);
+  }, [session?.accessToken]);
   
   return (
     <div className="flex-1 p-4">
