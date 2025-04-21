@@ -1,6 +1,7 @@
 // src/app/(dashboard)/layout.tsx
 import { Sidebar } from "@/components/sidebar"
 import { Topbar } from "@/components/topbar"
+import { useRouter } from 'next/router';
 
 export default function DashboardLayout({
   children,
