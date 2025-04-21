@@ -1,7 +1,6 @@
 // src/app/(dashboard)/layout.tsx
 import { Sidebar } from "@/components/sidebar"
 import { Topbar } from "@/components/topbar"
-import { useRouter } from 'next/router';
 
 export default function DashboardLayout({
   children,
@@ -17,7 +16,7 @@ export default function DashboardLayout({
   }
 
   if (!session) {
-    router.push('/login') // Login sayfasına yönlendir
+    redirect('/login') // Login sayfasına yönlendir
     return null // Yönlendirme yapıldığı için render edilmiyor
   }
   
