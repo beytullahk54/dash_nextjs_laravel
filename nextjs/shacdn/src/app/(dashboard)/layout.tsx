@@ -8,7 +8,6 @@ export default function DashboardLayout({
   children: React.ReactNode
 }) {
   const { data: session, status } = useSession()
-  const router = useRouter()
 
   // Eğer session yoksa veya yükleniyorsa login sayfasına yönlendir
   if (status === 'loading') {
