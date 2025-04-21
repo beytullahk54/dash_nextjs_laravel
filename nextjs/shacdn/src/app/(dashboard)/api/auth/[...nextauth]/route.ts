@@ -12,7 +12,8 @@ const handler = NextAuth({
       async authorize(credentials) {
         try {
         console.log("start2");
-        console.log(credentials);
+        console.log("credit",credentials);
+          console.log("backend_url",process.env.NEXT_PUBLIC_BACKEND_URL);
           const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/login`, {
             method: 'POST',
             headers: {
@@ -26,6 +27,7 @@ const handler = NextAuth({
           });
 
           const data = await res.json();
+          console.log(data)
           if (res.ok && data.token) {
             // Kullanıcı bilgilerini döndür
             return {
