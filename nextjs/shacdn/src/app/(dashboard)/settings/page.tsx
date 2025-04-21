@@ -1,8 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Sidebar } from "@/components/sidebar"
-import { Topbar } from "@/components/topbar"
-
-export default function Statistics() {
+export default function Settings() {
   return (
     <div className="flex-1 p-4">
         <h1 className="text-3xl font-bold mb-8">Ayarlar</h1>

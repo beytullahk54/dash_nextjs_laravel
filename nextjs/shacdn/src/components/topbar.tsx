@@ -1,8 +1,7 @@
 "use client"
 
-import { Bell, Search, User, LogOut, UserCircle } from "lucide-react"
+import {  User, LogOut, UserCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import {
   DropdownMenu,
   DropdownMenuContent,

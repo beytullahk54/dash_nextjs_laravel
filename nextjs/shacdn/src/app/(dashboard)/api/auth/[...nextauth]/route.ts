@@ -26,8 +26,6 @@ const handler = NextAuth({
           });
 
           const data = await res.json();
-
-          console.log(data);
           if (res.ok && data.token) {
             // Kullanıcı bilgilerini döndür
             return {
@@ -61,7 +59,7 @@ const handler = NextAuth({
     },
     async session({ session, token }) {
       if (token) {
-        session.user.id = token.id;
+        session.user.id = token.id as string;
         session.accessToken = token.accessToken;
       }
       return session;

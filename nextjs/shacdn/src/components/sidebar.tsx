@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
 import { HomeIcon, BarChart3Icon, UsersIcon, SettingsIcon } from "lucide-react"
 import Link from "next/link"
 

@@ -1,6 +1,4 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Sidebar } from "@/components/sidebar"
-import { Topbar } from "@/components/topbar"
 
 export default function Home() {
   return (

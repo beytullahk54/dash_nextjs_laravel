@@ -30,7 +30,7 @@ export const useUserStore = create<UserStore>((set) => ({
       const data = await response.json();
       set({ users: data, isLoading: false });
     } catch (error) {
-      set({ error: 'Kullanıcılar yüklenemedi', isLoading: false });
+      set({ error: error instanceof Error ? error.message : 'Kullanıcılar yüklenemedi', isLoading: false });
     }
   },
 }));

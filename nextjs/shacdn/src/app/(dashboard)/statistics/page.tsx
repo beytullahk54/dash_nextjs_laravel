@@ -1,7 +1,3 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Sidebar } from "@/components/sidebar"
-import { Topbar } from "@/components/topbar"
-
 export default function Statistics() {
   return (
     <div className="flex-1 p-4">

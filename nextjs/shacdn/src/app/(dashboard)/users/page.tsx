@@ -2,7 +2,7 @@
 
 import { Table, TableCaption, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table"
 import { useUserStore } from "@/store/useUserStore";
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import { useSession } from "next-auth/react"
 import { Button } from "@/components/ui/button";
 import { Pencil, Trash2 } from "lucide-react";
@@ -11,16 +11,15 @@ export default function Users() {
   const { data: session } = useSession();
   const { users, isLoading, error, fetchUsers } = useUserStore();
 
-  useEffect(() => {
+  const fetchUsersCallback = useCallback(() => {
     if (session?.accessToken) {
       fetchUsers(session.accessToken);
     }
-  }, [session?.accessToken]);
+  }, [session?.accessToken, fetchUsers]);
 
-  /*const users = [
-    { id: 1, name: "Ahmet Yılmaz", email: "ahmet@yilmaz.com", role: "Admin" },
-    { id: 2, name: "Alperen Yılmaz", email: "alperen@yilmaz.com", role: "User" },
-  ];*/
+  useEffect(() => {
+    fetchUsersCallback();
+  }, [fetchUsersCallback]);
 
   if (isLoading) {
     return (
