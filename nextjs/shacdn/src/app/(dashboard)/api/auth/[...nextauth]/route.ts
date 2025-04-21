@@ -13,7 +13,7 @@ const handler = NextAuth({
         try {
         console.log("start2");
         console.log(credentials);
-          const res = await fetch(`http://laravel.test/api/login`, {
+          const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/login`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
