@@ -3,20 +3,19 @@
 import { Table, TableCaption, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table"
 import { useUserStore } from "@/store/useUserStore";
 import { useEffect, useCallback } from "react";
-import { useSession } from "next-auth/react"
 import { Button } from "@/components/ui/button";
 import { Pencil, Trash2 } from "lucide-react";
+import { AuthService } from "@/lib/auth/AuthService";
 
 export default function Users() {
-  const { data: session } = useSession();
   const { users, isLoading, error, fetchUsers } = useUserStore();
+  const auth = AuthService.getInstance();
 
   const fetchUsersCallback = useCallback(() => {
-    if (session?.accessToken) {
-      fetchUsers(session.accessToken);
-    }
+    const token = auth.getToken();
+    fetchUsers(token || '');
     
-  }, [session?.accessToken, fetchUsers]);
+  }, [ fetchUsers]);
 
   useEffect(() => {
     fetchUsersCallback();

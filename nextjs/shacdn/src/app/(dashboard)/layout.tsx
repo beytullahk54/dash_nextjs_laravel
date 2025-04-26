@@ -2,7 +2,6 @@
 
 import { Sidebar } from "@/components/sidebar"
 import { Topbar } from "@/components/topbar"
-import { useSession } from 'next-auth/react'
 import { redirect } from 'next/navigation'
 
 export default function DashboardLayout({
@@ -10,17 +9,7 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode
 }) {
-  const { data: session, status } = useSession()
 
-  // Eğer session yoksa veya yükleniyorsa login sayfasına yönlendir
-  if (status === 'loading') {
-    return <div>Loading...</div> // Opsiyonel: yüklenme durumu
-  }
-
-  if (!session) {
-    redirect('/login') // Login sayfasına yönlendir
-    return null // Yönlendirme yapıldığı için render edilmiyor
-  }
   
   return (
     <div className="flex h-screen">
