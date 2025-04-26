@@ -1,3 +1,4 @@
+'use client'
 // src/app/(dashboard)/layout.tsx
 import { Sidebar } from "@/components/sidebar"
 import { Topbar } from "@/components/topbar"
@@ -7,6 +8,11 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode
 }) {
+  
+  /*if (!auth.isAuthenticated()) {
+    redirect('/login');
+  }*/
+
   return (
     <div className="flex h-screen">
       <div className="w-64 border-r">

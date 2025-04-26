@@ -3,19 +3,25 @@
 import { Table, TableCaption, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table"
 import { useUserStore } from "@/store/useUserStore";
 import { useEffect, useCallback } from "react";
-import { useSession } from "next-auth/react"
+//import { useSession } from "next-auth/react"
 import { Button } from "@/components/ui/button";
 import { Pencil, Trash2 } from "lucide-react";
+import { AuthService } from "@/lib/auth/AuthService";
 
 export default function Users() {
-  const { data: session } = useSession();
+  //const { data: session } = useSession();
   const { users, isLoading, error, fetchUsers } = useUserStore();
+  const auth = AuthService.getInstance();
 
+  console.log("users page",auth.getUser());
   const fetchUsersCallback = useCallback(() => {
-    if (session?.accessToken) {
+    /*if (session?.accessToken) {
       fetchUsers(session.accessToken);
-    }
-  }, [session?.accessToken, fetchUsers]);
+    }*/
+
+  }, [ fetchUsers ]);
+
+
 
   useEffect(() => {
     fetchUsersCallback();
@@ -60,7 +66,7 @@ export default function Users() {
             {users.map((user) => (
               <TableRow key={user.id}>
                 <TableCell className="font-medium">{user.name}</TableCell>
-                <TableCell>{user.email}</TableCell>
+                <TableCell>{auth.getUser()?.email}</TableCell>
                 <TableCell>
                   {new Date(user.created_at).toLocaleDateString('tr-TR')}
                 </TableCell>

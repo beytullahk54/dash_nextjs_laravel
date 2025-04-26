@@ -12,11 +12,9 @@ export default function RootLayout({
   return (
     <html lang="tr" suppressHydrationWarning>
       <body className={inter.className} suppressHydrationWarning>
-        <AuthProvider>
-          <div className="min-h-screen bg-background">
-            {children}
-          </div>
-        </AuthProvider>
+        <div className="min-h-screen bg-background">
+          {children}
+        </div>
       </body>
     </html>
   )
