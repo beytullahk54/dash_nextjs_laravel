@@ -1,30 +1,27 @@
 'use client';
 
 import { useState } from 'react';
-import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { AuthService } from '@/lib/auth/AuthService';
 
 export default function LoginPage() {
   const router = useRouter();
+  const auth = AuthService.getInstance();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const result = await signIn('credentials', {
-      email,
-      password,
-      redirect: false,
-    });
-
-    if (result?.error) {
-      setError('Giriş başarısız. Lütfen bilgilerinizi kontrol edin.');
-    } else {
+    
+    try {
+      await auth.login(email, password);
       router.push('/');
       router.refresh();
+    } catch (error) {
+      setError('Giriş başarısız. Lütfen bilgilerinizi kontrol edin.');
     }
   };
   

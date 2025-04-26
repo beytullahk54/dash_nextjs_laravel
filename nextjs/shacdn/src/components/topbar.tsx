@@ -8,16 +8,26 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { signOut, useSession } from "next-auth/react"
+//import { signOut, useSession } from "next-auth/react"
+import { AuthService } from "@/lib/auth/AuthService";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export function Topbar() {
-  const { data: session } = useSession();
-  
+  const router = useRouter();
+  //const { data: session } = useSession();
+  const auth = AuthService.getInstance();
+  const [userName, setUserName] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Sadece client tarafında çalışacak
+    const user = auth.getUser();
+    setUserName(user?.name || null);
+  }, []);
+
   const handleSignOut = async () => {
-    await signOut({
-      redirect: true,
-      callbackUrl: '/login' // çıkış yapınca login sayfasına yönlendir
-    });
+    await auth.logout();
+    router.push('/login');
   };
 
   return (
@@ -41,7 +51,7 @@ export function Topbar() {
               <Button variant="ghost" className="flex items-center gap-2">
                 <User className="h-5 w-5" />
                 <span className="font-medium">
-                  {session?.user?.name}
+                  {userName}
                 </span>
               </Button>
             </DropdownMenuTrigger>
